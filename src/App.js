@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+
+import { Suspense } from 'react';
 import './App.css';
+import {
+  RecoilRoot,
+
+} from 'recoil';
+// import Main from './Tutorial/Main';
+import TodoList from './Todo/TodoList';
+import TodoForm from './Todo/TodoForm';
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <RecoilRoot>
+        <header className="App-header">
+          {/* <Main /> */}
+          {/* Suspense is needed  */}
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <TodoForm />
+            <TodoList />
+          </Suspense>
+        </header>
+      </RecoilRoot>
+    </div >
   );
 }
 
